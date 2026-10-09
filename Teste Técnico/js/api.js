@@ -73,7 +73,7 @@ Form.addEventListener("submit", async (event) =>{
     //Caso o boleto esteja vencido, bloqueia o pagamento
     else if (boletoAtual.status === "vencido") {
         mensagemPagamento.textContent =
-            "Boleto vencido. O pagamento está bloqueado nesta simulação.";
+            "Boleto vencido. O pagamento foi bloqueado.";
         return;
     }
 
@@ -102,7 +102,7 @@ Form.addEventListener("submit", async (event) =>{
     pagamentoEmAndamento = true;
     btnPagar.disabled = true;
     btnPagar.textContent = "Processando...";
-    mensagemPagamento.textContent = "Simulando pagamento...";
+    mensagemPagamento.textContent = "Realizando pagamento...";
 
     try {
         // Confere novamente o status na API
@@ -161,18 +161,18 @@ Form.addEventListener("submit", async (event) =>{
         }
 
         mensagemPagamento.textContent =
-            "Pagamento simulado com sucesso!";
+            "Pagamento efetuado com sucesso!";
 
     } catch (erro) {
         console.error(erro);
 
         mensagemPagamento.textContent =
-            "Erro ao simular o pagamento. Tente novamente.";
+            "Erro ao efetuar o pagamento. Tente novamente.";
 
     } finally {
         pagamentoEmAndamento = false;
 
-        btnPagar.textContent = "Simular pagamento";
+        btnPagar.textContent = "Pagamento";
 
         btnPagar.disabled =
             !boletoAtual ||
